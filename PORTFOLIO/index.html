@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Jaskirat's portfolio - Aspiring Cyber Security Professional showcasing projects in web development, AI, and cybersecurity">
+  <meta name="keywords" content="cybersecurity, web development, portfolio, computing, apprenticeship">
+  <meta name="author" content="Jaskirat">
+  <title>Jaskirat - Cyber Security Portfolio</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    header {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 1rem 0;
+      text-align: center;
+      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 100;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    header.hidden {
+      transform: translateY(-100%);
+    }
+
+    header h1 {
+      font-size: 2rem;
+      margin-bottom: 0.3rem;
+      background: linear-gradient(45deg, #667eea, #764ba2);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    header h2 {
+      font-size: 1rem;
+      color: #666;
+      font-weight: 300;
+      margin-bottom: 0.5rem;
+    }
+
+    nav {
+      margin-top: 0.5rem;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #667eea;
+    }
+
+    main {
+      padding: 2rem 0;
+      margin-top: 120px; /* Account for fixed header */
+    }
+
+    section {
+      background: rgba(255, 255, 255, 0.9);
+      margin: 2rem 0;
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(10px);
+    }
+
+    h3 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: #333;
+      border-bottom: 3px solid #667eea;
+      padding-bottom: 0.5rem;
+    }
+
+    h4 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: #555;
+    }
+
+    h5 {
+      font-size: 1.2rem;
+      margin: 1.5rem 0 1rem 0;
+      color: #666;
+    }
+
+    .project {
+      background: rgba(255, 255, 255, 0.8);
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+      border-radius: 10px;
+      border-left: 4px solid #667eea;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .project:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+    }
+
+    .screenshots {
+      margin-top: 1.5rem;
+      padding-top: 1rem;
+      border-top: 1px solid #eee;
+    }
+
+    .screenshot-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .screenshot-container img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .screenshot-container img:hover {
+      transform: scale(1.05);
+    }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .skill-tag {
+      background: linear-gradient(45deg, #667eea, #764ba2);
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    .contact-links {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .contact-links a {
+      color: #667eea;
+      text-decoration: none;
+      padding: 0.5rem 1rem;
+      border: 2px solid #667eea;
+      border-radius: 25px;
+      transition: all 0.3s ease;
+    }
+
+    .contact-links a:hover {
+      background: #667eea;
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    footer {
+      background: rgba(255, 255, 255, 0.95);
+      text-align: center;
+      padding: 2rem 0;
+      margin-top: 2rem;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        padding: 0.8rem 0;
+      }
+      
+      header h1 {
+        font-size: 1.5rem;
+      }
+      
+      header h2 {
+        font-size: 0.9rem;
+      }
+      
+      nav ul {
+        flex-direction: row;
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+      
+      main {
+        margin-top: 100px;
+      }
+      
+      section {
+        padding: 1rem;
+      }
+      
+      .screenshot-container {
+        grid-template-columns: 1fr;
+      }
+      
+      .contact-links {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1>Jaskirat</h1>
+      <h2>Aspiring Tech Professional with a Passion for Cyber Security, AI and Software Development</h2>
+      <nav>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#studies">Current Studies</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section id="about">
+      <h3>About Me</h3>
+      <p>Hello! I'm Jaskirat, currently studying Computing and working towards a degree apprenticeship in the tech sector. I'm passionate about the entire technology landscape, including cybersecurity, web development, artificial intelligence, and software engineering. My goal is to build a versatile career in the tech industry, contributing to innovative solutions while continuously learning and adapting to emerging technologies in this rapidly evolving field.</p>
+      
+      <div class="skills">
+        <span class="skill-tag">Software Development</span>
+        <span class="skill-tag">Web Development</span>
+        <span class="skill-tag">Cyber Security</span>
+        <span class="skill-tag">HTML/CSS</span>
+        <span class="skill-tag">JavaScript</span>
+        <span class="skill-tag">AI & Machine Learning</span>
+        <span class="skill-tag">Problem Solving</span>
+      </div>
+    </section>
+
+    <section id="projects">
+      <h3>Projects</h3>
+
+      <article class="project">
+        <h4>Project 1: Portfolio Website</h4>
+        <p>This responsive portfolio website showcases my skills and projects in Cyber Security, AI, and Games Development. Built with modern HTML5, CSS3, and JavaScript, featuring a clean design with smooth animations and mobile-first approach.</p>
+        <div class="skills">
+          <span class="skill-tag">HTML5</span>
+          <span class="skill-tag">CSS3</span>
+          <span class="skill-tag">Responsive Design</span>
+        </div>
+      </article>
+
+      <article class="project">
+        <h4>Project 2: AI Chatbot</h4>
+        <p>Developed an intelligent conversational AI chatbot that demonstrates my understanding of artificial intelligence and machine learning concepts. This project showcases natural language processing capabilities, user interaction design, and AI integration. The chatbot can engage in meaningful conversations, answer questions, and provide assistance across various topics. Built with modern web technologies and AI frameworks, this project highlights my ability to work with emerging technologies and create practical AI solutions.</p>
+        
+        <div class="skills">
+          <span class="skill-tag">Artificial Intelligence</span>
+          <span class="skill-tag">Machine Learning</span>
+          <span class="skill-tag">Natural Language Processing</span>
+          <span class="skill-tag">JavaScript</span>
+          <span class="skill-tag">API Integration</span>
+          <span class="skill-tag">UI/UX Design</span>
+        </div>
+
+        <div class="screenshots">
+          <h5>Project Demo</h5>
+          <div class="screenshot-container">
+            <img src="ai chatbot image.png" alt="AI Chatbot interface showing conversation and user interaction" loading="lazy">
+          </div>
+        </div>
+
+        <div class="screenshots">
+          <h5>Project Repository</h5>
+          <p style="margin-top: 1rem;"><strong>GitHub:</strong> <a href="https://github.com/jaskirat-singh-student/AI-chatbot-" target="_blank" rel="noopener noreferrer" style="color: #667eea; text-decoration: none;">https://github.com/jaskirat-singh-student/AI-chatbot-</a></p>
+        </div>
+      </article>
+
+      <article class="project">
+        <h4>Project 3: Hot Beans Web (College Project)</h4>
+        <p>A comprehensive multi-page website built with HTML, CSS, and JavaScript as part of my college coursework. This project demonstrates my understanding of web development fundamentals, user experience design, and responsive layouts.</p>
+        
+        <div class="skills">
+          <span class="skill-tag">HTML</span>
+          <span class="skill-tag">CSS</span>
+          <span class="skill-tag">JavaScript</span>
+          <span class="skill-tag">UI/UX Design</span>
+        </div>
+      </article>
+    </section>
+
+    <section id="experience">
+      <h3>Virtual Work Experience & Cybersecurity Achievements</h3>
+
+      <article class="project">
+        <h4>Fujitsu Cyber Security Work Experience</h4>
+        <p>Completed a comprehensive virtual work experience program with Fujitsu, focusing on cybersecurity fundamentals and practical applications. This program provided valuable insights into the cybersecurity industry, threat analysis, and security best practices used in enterprise environments.</p>
+        
+        <div class="skills">
+          <span class="skill-tag">Cyber Security</span>
+          <span class="skill-tag">Threat Analysis</span>
+          <span class="skill-tag">Risk Assessment</span>
+          <span class="skill-tag">Security Best Practices</span>
+        </div>
+
+        <div class="screenshots">
+          <h5>Certificate</h5>
+          <div class="screenshot-container">
+            <img src="final certificate.png" alt="Fujitsu Cyber Security Work Experience Certificate" loading="lazy">
+          </div>
+        </div>
+      </article>
+
+      <article class="project">
+        <h4>TryHackMe Cybersecurity Learning Platform</h4>
+        <p>Actively engaged in hands-on cybersecurity learning through TryHackMe, successfully completing 4 foundational rooms that cover essential cybersecurity concepts. Completed modules include "Offensive Security Intro" (ethical hacking fundamentals), "Defensive Security Intro" (threat intelligence and malware analysis), "Careers in Cyber" (industry pathways), and "What is Networking?" (networking fundamentals).</p>
+        
+        <div class="skills">
+          <span class="skill-tag">Offensive Security</span>
+          <span class="skill-tag">Defensive Security</span>
+          <span class="skill-tag">Threat Intelligence</span>
+          <span class="skill-tag">Malware Analysis</span>
+          <span class="skill-tag">Networking Fundamentals</span>
+          <span class="skill-tag">Ethical Hacking</span>
+        </div>
+
+        <div class="screenshots">
+          <h5>Achievements</h5>
+          <div class="screenshot-container">
+            <img src="badges.png" alt="TryHackMe cybersecurity learning achievements and progress" loading="lazy">
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section id="studies">
+      <h3>Current Studies</h3>
+
+      <article class="project">
+        <h4>BTEC National Extended Diploma in Computing - Halesowen College</h4>
+        <p>Currently pursuing a BTEC National Extended Diploma in Computing at Halesowen College, having successfully completed my first year. Starting my second year in September, this comprehensive program is providing me with in-depth knowledge and practical skills across multiple areas of the technology sector, significantly expanding my expertise in cybersecurity, games development, and broader computing disciplines.</p>
+        
+        <p style="margin-top: 1rem;">Throughout the course, I am studying essential areas including advanced cybersecurity principles and practices, game development methodologies and programming, software engineering and development lifecycle, database design and management, network infrastructure and security, and emerging technologies in the computing field. This structured learning approach provides both theoretical knowledge and hands-on practical experience, preparing me for various career paths within the technology industry.</p>
+        
+        <div class="skills">
+          <span class="skill-tag">Advanced Cybersecurity</span>
+          <span class="skill-tag">Game Development</span>
+          <span class="skill-tag">Software Engineering</span>
+          <span class="skill-tag">Database Management</span>
+          <span class="skill-tag">Network Security</span>
+          <span class="skill-tag">Programming</span>
+          <span class="skill-tag">System Analysis</span>
+        </div>
+      </article>
+    </section>
+
+    <section id="contact">
+      <h3>Get In Touch</h3>
+      <p>I'm always interested in new opportunities and collaborations. Feel free to reach out!</p>
+      <p><strong>Email:</strong> jaskirat30983@gmail.com</p>
+      <div class="contact-links">
+        <a href="mailto:jaskirat30983@gmail.com" aria-label="Send me an email">Email Me</a>
+        <a href="https://www.linkedin.com/in/jaksirat-singh-530b12314" target="_blank" rel="noopener noreferrer" aria-label="View my LinkedIn profile">LinkedIn</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2024 Jaskirat. All rights reserved. | Built with passion for cybersecurity and web development.</p>
+    </div>
+  </footer>
+
+  <script>
+    let lastScrollY = window.scrollY;
+    const header = document.querySelector('header');
+    
+    window.addEventListener('scroll', () => {
+      const currentScrollY = window.scrollY;
+      
+      if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        // Scrolling down and past 100px
+        header.classList.add('hidden');
+      } else {
+        // Scrolling up or at top
+        header.classList.remove('hidden');
+      }
+      
+      lastScrollY = currentScrollY;
+    });
+  </script>
+</body>
+</html>
